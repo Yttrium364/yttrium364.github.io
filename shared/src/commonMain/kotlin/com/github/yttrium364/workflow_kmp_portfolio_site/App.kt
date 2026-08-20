@@ -5,5 +5,5 @@ import androidx.compose.runtime.*
 
 @Composable
 fun App() {
-    Text("uh")
+    Text("kmp-portfolio")
 }
