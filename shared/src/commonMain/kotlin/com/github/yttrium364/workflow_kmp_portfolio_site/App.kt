@@ -14,28 +14,36 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.github.yttrium364.workflow_kmp_portfolio_site.domain.copyEn
+import com.github.yttrium364.workflow_kmp_portfolio_site.platform.screenWidthDp
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.ColorTokens
+import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.LocalCopy
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.PortfolioTheme
+import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.layout.SiteHeader
 
 @Composable
 fun App() {
+    CompositionLocalProvider(LocalCopy provides copyEn()){
     PortfolioTheme {
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
+
+        Box(
+            modifier = Modifier.padding(top = 72.dp)
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background),
+        ) {
+            SiteHeader()
+            LazyColumn(modifier = Modifier.fillMaxSize())
+            {
             item {
                 Text("Hero", color = MaterialTheme.colorScheme.onBackground)
+                Text("${screenWidthDp()}", color = MaterialTheme.colorScheme.onBackground)
                 Column(modifier = Modifier.fillMaxWidth().widthIn(max = 1200.dp).padding(24.dp)) {
                 }
             }
         }
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background),
-        ) {
-            Text(
-                text = "kmp-portfolio",
-                color = MaterialTheme.colorScheme.onBackground,
-            )
+
         }
     }
+}
+
 }
