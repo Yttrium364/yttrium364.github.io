@@ -23,27 +23,30 @@ import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.layout.SiteHea
 
 @Composable
 fun App() {
-    CompositionLocalProvider(LocalCopy provides copyEn()){
-    PortfolioTheme {
+    CompositionLocalProvider(LocalCopy provides copyEn()) {
 
-        Box(
-            modifier = Modifier.padding(top = 72.dp)
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background),
-        ) {
-            SiteHeader()
-            LazyColumn(modifier = Modifier.fillMaxSize())
-            {
-            item {
-                Text("Hero", color = MaterialTheme.colorScheme.onBackground)
-                Text("${screenWidthDp()}", color = MaterialTheme.colorScheme.onBackground)
-                Column(modifier = Modifier.fillMaxWidth().widthIn(max = 1200.dp).padding(24.dp)) {
+        PortfolioTheme {
+
+            Box(
+                modifier = Modifier.padding(top = 72.dp)
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.background),
+            ) {
+                SiteHeader()
+                LazyColumn(modifier = Modifier.fillMaxSize())
+                {
+                    item {
+                        Text(LocalCopy.current.tagline)
+                        Text("Hero", color = MaterialTheme.colorScheme.onBackground)
+                        Text("${screenWidthDp()}", color = MaterialTheme.colorScheme.onBackground)
+                        Column(modifier = Modifier.fillMaxWidth().widthIn(max = 1200.dp).padding(24.dp)) {
+                        }
+                    }
                 }
+
+
             }
         }
 
-        }
     }
-}
-
 }
