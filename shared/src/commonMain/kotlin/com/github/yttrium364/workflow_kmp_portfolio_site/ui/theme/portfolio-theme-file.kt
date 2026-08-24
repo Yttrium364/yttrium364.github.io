@@ -4,8 +4,18 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 
+enum class AppColorTheme {
+    Navy;
+
+    fun next(): AppColorTheme = Navy
+    fun label(): String = "Navy"
+}
+
 @Composable
-fun PortfolioTheme(content: @Composable () -> Unit) {
+fun PortfolioTheme(
+    theme: AppColorTheme = AppColorTheme.Navy,
+    content: @Composable () -> Unit
+) {
     MaterialTheme(
         colorScheme = darkColorScheme(
             primary = ColorTokens.mint,
