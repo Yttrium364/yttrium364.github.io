@@ -3,6 +3,7 @@ package com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.MaterialTheme
@@ -16,27 +17,37 @@ import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.LocalCopy
 
 
 @Composable
-fun HeroSection(modifier: Modifier = Modifier) {
+fun HeroSection(
+    onOpenUrl: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val copy = LocalCopy.current
     Box(
         modifier = modifier
             .fillMaxSize()
             .padding(top = 72.dp),
         contentAlignment = Alignment.Center
     ) {
-        val copy = LocalCopy.current
-
         Column(
-            modifier = Modifier.widthIn(max = 800.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .widthIn(max = 1200.dp)
+                .padding(24.dp)
         ) {
             Text(
                 text = copy.role,
                 fontSize = 48.sp,
                 color = MaterialTheme.colorScheme.onBackground
             )
-
             Text(
                 text = copy.tagline,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.padding(vertical = 12.dp)
+            )
+            HeroLinks(
+                onProjects = {},
+                onLive = {},
+                onOpenUrl = onOpenUrl
             )
         }
     }

@@ -7,8 +7,15 @@ import androidx.compose.runtime.Composable
 enum class AppColorTheme {
     Navy;
 
-    fun next(): AppColorTheme = Navy
-    fun label(): String = "Navy"
+    fun next(): AppColorTheme {
+        val values = entries
+        val nextIndex = (ordinal + 1) % values.size
+        return values[nextIndex]
+    }
+
+    fun label(): String = when (this) {
+        Navy -> "Navy"
+    }
 }
 
 @Composable
