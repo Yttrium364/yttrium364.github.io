@@ -10,6 +10,18 @@ fun copyEt() = LocalizedCopy(
     kmpHeading = "KMP Supervõimed",
     projectsHeading = "Esiletõstetud Projektid",
     projectsCta = "Vaata Projekte",
+    liveHeading = "Live-laborid",
     liveCta = "Vaata Otseülekannet",
-    github = "GitHub"
+    check = "Kontrolli",
+    newLetters = "Uued tähed",
+    start = "Alusta",
+    github = "GitHub",
+    labs = listOf(
+        LabEntry(
+            id = LabId.Unscramble,
+            title = "Unscramble",
+            level = "Algaja",
+            brief = "Jagatud Compose UI-ga sõnamängu labor."
+        )
+    )
 )

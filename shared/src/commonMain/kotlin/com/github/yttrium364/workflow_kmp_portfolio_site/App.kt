@@ -14,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.github.yttrium364.workflow_kmp_portfolio_site.domain.AppLanguage
+import com.github.yttrium364.workflow_kmp_portfolio_site.domain.LabId
 import com.github.yttrium364.workflow_kmp_portfolio_site.domain.SectionId
 import com.github.yttrium364.workflow_kmp_portfolio_site.domain.localizedCopy
 import com.github.yttrium364.workflow_kmp_portfolio_site.platform.createLinkOpener
@@ -24,7 +25,9 @@ import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.PortfolioTheme
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.layout.SiteHeader
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.HeroSection
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.KmpSection
+import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.LiveSection
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.ProjectsSection
+import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.UnscramblePage
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.WhySection
 
 
@@ -33,6 +36,7 @@ import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.WhySec
 fun App() {
     var colorTheme by remember { mutableStateOf(AppColorTheme.Navy) }
     var language by remember { mutableStateOf(AppLanguage.English) }
+    var openLab by remember { mutableStateOf<LabId?>(null) }
     val opener = remember { createLinkOpener() }
 
     PortfolioTheme(theme = colorTheme) {
@@ -46,31 +50,41 @@ fun App() {
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.TopCenter,
                 ) {
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize()
-                    ) {
-                        item(SectionId.Hero) {
-                            HeroSection(
-                                modifier = Modifier.fillParentMaxSize(),
-                                onOpenUrl = { opener.openCatching(it) }
-                            )
+                    if (openLab == null) {
+                        LazyColumn(
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            item(SectionId.Hero) {
+                                HeroSection(
+                                    modifier = Modifier.fillParentMaxSize(),
+                                    onOpenUrl = { opener.openCatching(it) }
+                                )
+                            }
+                            item(SectionId.Why) {
+                                WhySection(
+                                    modifier = Modifier.fillParentMaxSize()
+                                )
+                            }
+                            item(SectionId.Kmp) {
+                                KmpSection(
+                                    modifier = Modifier.fillParentMaxSize()
+                                )
+                            }
+                            item(SectionId.Projects) {
+                                ProjectsSection(
+                                    onOpenProject = { opener.openCatching(it) },
+                                    modifier = Modifier.fillParentMaxSize()
+                                )
+                            }
+                            item(SectionId.Live) {
+                                LiveSection(
+                                    onOpenLab = { id -> openLab = id },
+                                    modifier = Modifier.fillParentMaxSize(),
+                                )
+                            }
                         }
-                        item(SectionId.Why) {
-                            WhySection(
-                                modifier = Modifier.fillParentMaxSize()
-                            )
-                        }
-                        item(SectionId.Kmp) {
-                            KmpSection(
-                                modifier = Modifier.fillParentMaxSize()
-                            )
-                        }
-                        item(SectionId.Projects) {
-                            ProjectsSection(
-                                onOpenProject = { opener.openCatching(it) },
-                                modifier = Modifier.fillParentMaxSize()
-                            )
-                        }
+                    } else {
+                        UnscramblePage()
                     }
                 }
 

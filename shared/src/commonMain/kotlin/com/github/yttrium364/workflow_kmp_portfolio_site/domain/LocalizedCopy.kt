@@ -10,6 +10,11 @@ data class LocalizedCopy(
     val kmpHeading: String,
     val projectsHeading: String,
     val projectsCta: String,
+    val liveHeading: String,
     val liveCta: String,
+    val check: String,
+    val newLetters: String,
+    val start: String,
     val github: String,
+    val labs: List<LabEntry>,
 )

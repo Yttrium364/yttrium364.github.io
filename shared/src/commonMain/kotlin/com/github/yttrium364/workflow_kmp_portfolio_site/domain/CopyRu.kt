@@ -10,6 +10,18 @@ fun copyRu() = LocalizedCopy(
     kmpHeading = "Суперсилы KMP",
     projectsHeading = "Избранные Проекты",
     projectsCta = "Проекты",
+    liveHeading = "Лайв-лаборатории",
     liveCta = "Смотреть Лайв",
-    github = "GitHub"
+    check = "Проверить",
+    newLetters = "Новые буквы",
+    start = "Старт",
+    github = "GitHub",
+    labs = listOf(
+        LabEntry(
+            id = LabId.Unscramble,
+            title = "Unscramble",
+            level = "Начальный",
+            brief = "Лаборатория со словесной головоломкой на общем Compose UI."
+        )
+    )
 )

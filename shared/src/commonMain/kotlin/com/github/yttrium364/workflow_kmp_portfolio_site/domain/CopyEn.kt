@@ -10,6 +10,18 @@ fun copyEn() = LocalizedCopy(
     kmpHeading = "KMP Superpowers",
     projectsHeading = "Featured Projects",
     projectsCta = "View Projects",
+    liveHeading = "Live labs",
     liveCta = "Watch Live",
-    github = "GitHub"
+    check = "Check",
+    newLetters = "New letters",
+    start = "Start",
+    github = "GitHub",
+    labs = listOf(
+        LabEntry(
+            id = LabId.Unscramble,
+            title = "Unscramble",
+            level = "Beginner",
+            brief = "A word puzzle lab built with shared Compose UI."
+        )
+    )
 )
