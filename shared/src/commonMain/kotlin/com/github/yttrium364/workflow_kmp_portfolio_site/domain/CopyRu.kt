@@ -22,6 +22,12 @@ fun copyRu() = LocalizedCopy(
             title = "Unscramble",
             level = "Начальный",
             brief = "Лаборатория со словесной головоломкой на общем Compose UI."
+        ),
+        LabEntry(
+            id = LabId.Dice,
+            title = "Кости",
+            level = "Начальный",
+            brief = "Бросьте две кости и узнайте победителя."
         )
     )
 )

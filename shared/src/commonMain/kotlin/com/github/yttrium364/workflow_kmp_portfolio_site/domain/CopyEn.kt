@@ -22,6 +22,12 @@ fun copyEn() = LocalizedCopy(
             title = "Unscramble",
             level = "Beginner",
             brief = "A word puzzle lab built with shared Compose UI."
+        ),
+        LabEntry(
+            id = LabId.Dice,
+            title = "Dice",
+            level = "Beginner",
+            brief = "Roll two dice and see who wins."
         )
     )
 )

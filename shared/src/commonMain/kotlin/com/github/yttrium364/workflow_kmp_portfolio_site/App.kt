@@ -24,6 +24,7 @@ import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.LocalCopy
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.PortfolioTheme
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.layout.SiteHeader
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.HeroSection
+import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.DicePage
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.KmpSection
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.LiveSection
 import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.ProjectsSection
@@ -84,7 +85,11 @@ fun App() {
                             }
                         }
                     } else {
-                        UnscramblePage()
+                        when (openLab) {
+                            LabId.Unscramble -> UnscramblePage()
+                            LabId.Dice -> DicePage()
+                            null -> Unit
+                        }
                     }
                 }
 

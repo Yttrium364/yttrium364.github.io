@@ -22,6 +22,12 @@ fun copyEt() = LocalizedCopy(
             title = "Unscramble",
             level = "Algaja",
             brief = "Jagatud Compose UI-ga sõnamängu labor."
+        ),
+        LabEntry(
+            id = LabId.Dice,
+            title = "Täringud",
+            level = "Algaja",
+            brief = "Veereta kahte täringut ja vaata, kes võidab."
         )
     )
 )

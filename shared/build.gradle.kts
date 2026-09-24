@@ -37,4 +37,7 @@ kotlin {
             implementation(libs.wrappers.browser)
         }
     }
+    sourceSets.commonMain.dependencies {
+        implementation(kotlin("test"))
+    }
 }
