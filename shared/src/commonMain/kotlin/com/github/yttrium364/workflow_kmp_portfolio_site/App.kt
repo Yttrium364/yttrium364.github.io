@@ -34,72 +34,73 @@ import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.section.WhySec
 
 
 @Composable
-fun App() {
-    var colorTheme by remember { mutableStateOf(AppColorTheme.Navy) }
-    var language by remember { mutableStateOf(AppLanguage.English) }
-    var openLab by remember { mutableStateOf<LabId?>(null) }
-    val opener = remember { createLinkOpener() }
+fun GuessPage() {
 
-    PortfolioTheme(theme = colorTheme) {
-        CompositionLocalProvider(value = LocalCopy provides language.localizedCopy()) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background),
-            ) {
+        var colorTheme by remember { mutableStateOf(AppColorTheme.Navy) }
+        var language by remember { mutableStateOf(AppLanguage.English) }
+        var openLab by remember { mutableStateOf<LabId?>(null) }
+        val opener = remember { createLinkOpener() }
+
+        PortfolioTheme(theme = colorTheme) {
+            CompositionLocalProvider(value = LocalCopy provides language.localizedCopy()) {
                 Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.TopCenter,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background),
                 ) {
-                    if (openLab == null) {
-                        LazyColumn(
-                            modifier = Modifier.fillMaxSize()
-                        ) {
-                            item(SectionId.Hero) {
-                                HeroSection(
-                                    modifier = Modifier.fillParentMaxSize(),
-                                    onOpenUrl = { opener.openCatching(it) }
-                                )
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.TopCenter,
+                    ) {
+                        if (openLab == null) {
+                            LazyColumn(
+                                modifier = Modifier.fillMaxSize()
+                            ) {
+                                item(SectionId.Hero) {
+                                    HeroSection(
+                                        modifier = Modifier.fillParentMaxSize(),
+                                        onOpenUrl = { opener.openCatching(it) }
+                                    )
+                                }
+                                item(SectionId.Why) {
+                                    WhySection(
+                                        modifier = Modifier.fillParentMaxSize()
+                                    )
+                                }
+                                item(SectionId.Kmp) {
+                                    KmpSection(
+                                        modifier = Modifier.fillParentMaxSize()
+                                    )
+                                }
+                                item(SectionId.Projects) {
+                                    ProjectsSection(
+                                        onOpenProject = { opener.openCatching(it) },
+                                        modifier = Modifier.fillParentMaxSize()
+                                    )
+                                }
+                                item(SectionId.Live) {
+                                    LiveSection(
+                                        onOpenLab = { id -> openLab = id },
+                                        modifier = Modifier.fillParentMaxSize(),
+                                    )
+                                }
                             }
-                            item(SectionId.Why) {
-                                WhySection(
-                                    modifier = Modifier.fillParentMaxSize()
-                                )
+                        } else {
+                            when (openLab) {
+                                LabId.Unscramble -> UnscramblePage()
+                                LabId.Dice -> DicePage()
+                                null -> Unit
                             }
-                            item(SectionId.Kmp) {
-                                KmpSection(
-                                    modifier = Modifier.fillParentMaxSize()
-                                )
-                            }
-                            item(SectionId.Projects) {
-                                ProjectsSection(
-                                    onOpenProject = { opener.openCatching(it) },
-                                    modifier = Modifier.fillParentMaxSize()
-                                )
-                            }
-                            item(SectionId.Live) {
-                                LiveSection(
-                                    onOpenLab = { id -> openLab = id },
-                                    modifier = Modifier.fillParentMaxSize(),
-                                )
-                            }
-                        }
-                    } else {
-                        when (openLab) {
-                            LabId.Unscramble -> UnscramblePage()
-                            LabId.Dice -> DicePage()
-                            null -> Unit
                         }
                     }
-                }
 
-                SiteHeader(
-                    language = language,
-                    onLanguageChange = { language = it },
-                    theme = colorTheme,
-                    onThemeChange = { colorTheme = it }
-                )
+                    SiteHeader(
+                        language = language,
+                        onLanguageChange = { language = it },
+                        theme = colorTheme,
+                        onThemeChange = { colorTheme = it }
+                    )
+                }
             }
         }
     }
-}
