@@ -5,6 +5,8 @@ data class KmpChipItem(val scope: KmpScope?) {
 }
 
 object SiteContent {
+    val headerNav = listOf(SectionId.Why, SectionId.Kmp, SectionId.Projects, SectionId.Live)
+
     val social = listOf(
         SocialLink(label = "GitHub", url = "https://github.com")
     )

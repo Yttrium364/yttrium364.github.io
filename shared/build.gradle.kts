@@ -31,13 +31,13 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
         }
         commonTest.dependencies {
-            implementation(libs.kotlin.test)
+            implementation(kotlin("test"))
+        }
+        jvmTest.dependencies {
+            implementation(kotlin("test-junit"))
         }
         jsMain.dependencies {
             implementation(libs.wrappers.browser)
         }
-    }
-    sourceSets.commonMain.dependencies {
-        implementation(kotlin("test"))
     }
 }

@@ -10,11 +10,14 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.github.yttrium364.workflow_kmp_portfolio_site.GuessGame
+import com.github.yttrium364.workflow_kmp_portfolio_site.domain.GuessHint
+import com.github.yttrium364.workflow_kmp_portfolio_site.domain.GuessState
 
 @Composable
 fun GuessLab() {
     var state by remember {
-        mutableStateOf(GuessGame.start())
+        mutableStateOf<GuessState>(GuessGame.start())
     }
 
     Column(
@@ -58,9 +61,13 @@ private fun KeyChip(
     }
 }
 
-private fun copy(state: GuessGame.State): String {
+private fun copy(state: GuessState): String {
     return when (state) {
-        is GuessGame.State.Playing -> state.hint
-        is GuessGame.State.Correct -> "Correct!"
+        is GuessState.Playing -> when (state.lastHint) {
+            GuessHint.Low -> "Too low"
+            GuessHint.High -> "Too high"
+            null -> "Guess a number from ${GuessGame.min} to ${GuessGame.max}"
+        }
+        is GuessState.Won -> "Correct in ${state.tries} tries!"
     }
 }

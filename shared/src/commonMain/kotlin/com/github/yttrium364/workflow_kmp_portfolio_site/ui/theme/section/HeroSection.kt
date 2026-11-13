@@ -19,6 +19,8 @@ import com.github.yttrium364.workflow_kmp_portfolio_site.ui.theme.LocalCopy
 @Composable
 fun HeroSection(
     onOpenUrl: (String) -> Unit,
+    onProjects: () -> Unit,
+    onLive: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val copy = LocalCopy.current
@@ -45,8 +47,8 @@ fun HeroSection(
                 modifier = Modifier.padding(vertical = 12.dp)
             )
             HeroLinks(
-                onProjects = {},
-                onLive = {},
+                onProjects = onProjects,
+                onLive = onLive,
                 onOpenUrl = onOpenUrl
             )
         }

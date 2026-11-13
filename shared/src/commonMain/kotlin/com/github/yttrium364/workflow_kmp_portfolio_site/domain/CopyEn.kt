@@ -15,6 +15,12 @@ fun copyEn() = LocalizedCopy(
     check = "Check",
     newLetters = "New letters",
     start = "Start",
+    back = "Back",
+    menu = "Menu",
+    navAbout = "About",
+    navKmp = "KMP",
+    navProjects = "Projects",
+    navLive = "Live",
     github = "GitHub",
     labs = listOf(
         LabEntry(
@@ -28,6 +34,12 @@ fun copyEn() = LocalizedCopy(
             title = "Dice",
             level = "Beginner",
             brief = "Roll two dice and see who wins."
+        ),
+        LabEntry(
+            id = LabId.Hangman,
+            title = "Hangman",
+            level = "Beginner",
+            brief = "Guess the hidden word one letter at a time."
         )
     )
 )

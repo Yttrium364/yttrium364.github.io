@@ -15,6 +15,12 @@ fun copyEt() = LocalizedCopy(
     check = "Kontrolli",
     newLetters = "Uued tähed",
     start = "Alusta",
+    back = "Tagasi",
+    menu = "Menüü",
+    navAbout = "Minust",
+    navKmp = "KMP",
+    navProjects = "Projektid",
+    navLive = "Laborid",
     github = "GitHub",
     labs = listOf(
         LabEntry(
@@ -28,6 +34,12 @@ fun copyEt() = LocalizedCopy(
             title = "Täringud",
             level = "Algaja",
             brief = "Veereta kahte täringut ja vaata, kes võidab."
+        ),
+        LabEntry(
+            id = LabId.Hangman,
+            title = "Hangman",
+            level = "Algaja",
+            brief = "Arva peidetud sõna tähti pakkudes."
         )
     )
 )

@@ -2,6 +2,7 @@ package com.github.yttrium364.workflow_kmp_portfolio_site
 
 
 import com.github.yttrium364.workflow_kmp_portfolio_site.domain.HangState
+import com.github.yttrium364.workflow_kmp_portfolio_site.domain.Hangman
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs

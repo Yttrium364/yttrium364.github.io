@@ -15,6 +15,12 @@ fun copyRu() = LocalizedCopy(
     check = "Проверить",
     newLetters = "Новые буквы",
     start = "Старт",
+    back = "Назад",
+    menu = "Меню",
+    navAbout = "Обо мне",
+    navKmp = "KMP",
+    navProjects = "Проекты",
+    navLive = "Лаборатории",
     github = "GitHub",
     labs = listOf(
         LabEntry(
@@ -28,6 +34,12 @@ fun copyRu() = LocalizedCopy(
             title = "Кости",
             level = "Начальный",
             brief = "Бросьте две кости и узнайте победителя."
+        ),
+        LabEntry(
+            id = LabId.Hangman,
+            title = "Виселица",
+            level = "Начальный",
+            brief = "Угадайте слово, выбирая буквы по одной."
         )
     )
 )

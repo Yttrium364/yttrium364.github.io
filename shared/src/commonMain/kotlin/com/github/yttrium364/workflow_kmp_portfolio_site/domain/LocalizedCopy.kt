@@ -15,6 +15,12 @@ data class LocalizedCopy(
     val check: String,
     val newLetters: String,
     val start: String,
+    val back: String,
+    val menu: String,
+    val navAbout: String,
+    val navKmp: String,
+    val navProjects: String,
+    val navLive: String,
     val github: String,
     val labs: List<LabEntry>,
 )

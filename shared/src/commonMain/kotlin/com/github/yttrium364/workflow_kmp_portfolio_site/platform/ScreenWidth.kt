@@ -5,3 +5,5 @@ import androidx.compose.runtime.Composable
 
 @Composable
 expect fun screenWidthDp(): Int
+
+fun isCompactWidth(widthDp: Int): Boolean = widthDp < 992
